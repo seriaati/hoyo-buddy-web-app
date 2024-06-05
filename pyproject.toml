@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "hoyo-buddy-web-app"
+version = "0.1.0"
+description = "Web app to display Hoyo Buddy's commands in real-time"
+authors = ["seria <seria.ati@gmail.com>"]
+license = "GPL-3.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiohttp = "^3.9.5"
+flet = "^0.22.1"
+discord-py = "^2.3.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
