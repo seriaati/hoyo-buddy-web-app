@@ -27,7 +27,7 @@ async def fetch_commands(locale: discord.Locale) -> dict[str, str]:
     async with aiohttp.ClientSession() as session, session.get(
         "https://hb-api.seriaati.xyz/commands", params={"locale": locale.value}
     ) as response:
-        data= await response.json()
+        data = await response.json()
         cache[locale] = data
         return data
 
@@ -82,6 +82,7 @@ async def main(page: ft.Page) -> None:
     locale = discord.Locale.american_english
     commands = await fetch_commands(locale)
 
+    page.title = "Hoyo Buddy Commands"
     page.scroll = ft.ScrollMode.ADAPTIVE
     page.appbar = ft.AppBar(
         title=ft.Container(
@@ -133,4 +134,6 @@ async def main(page: ft.Page) -> None:
     add_command_cards(page, commands)
 
 
-ft.app(main, view=None if sys.platform == "linux" else ft.AppView.WEB_BROWSER, port=4563)
+ft.app(
+    main, view=None if sys.platform == "linux" else ft.AppView.WEB_BROWSER, port=4563
+)
