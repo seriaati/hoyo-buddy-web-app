@@ -133,4 +133,4 @@ async def main(page: ft.Page) -> None:
     add_command_cards(page, commands)
 
 
-ft.app(main, view=None if sys.platform == "linux" else ft.AppView.WEB_BROWSER)
+ft.app(main, view=None if sys.platform == "linux" else ft.AppView.WEB_BROWSER, port=4563)
