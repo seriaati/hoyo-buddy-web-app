@@ -18,17 +18,13 @@ LOCALE_NAMES: Final[dict[discord.Locale, str]] = {
 NAME_TO_LOCALE: Final[dict[str, discord.Locale]] = {
     v: k for k, v in LOCALE_NAMES.items()
 }
-cache: dict[discord.Locale, dict[str, str]] = {}
 
 
 async def fetch_commands(locale: discord.Locale) -> dict[str, str]:
-    if locale in cache:
-        return cache[locale]
     async with aiohttp.ClientSession() as session, session.get(
         "https://hb-api.seriaati.xyz/commands", params={"locale": locale.value}
     ) as response:
         data = await response.json()
-        cache[locale] = data
         return data
 
 
